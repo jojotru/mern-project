@@ -1,5 +1,6 @@
 const express = require('express')
 
+
 const router = express.Router()
 // GET all workouts
 router.get('/', (req, res) => {
@@ -12,8 +13,15 @@ router.get('/:id', (req, res) => {
 })
  
 // POST a new workout
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a new workout'})
+router.post('/', async (req, res) => {
+    const {title, count, reps} = req.body
+
+    try{
+        const workout = await Workout.create({title, count, reps})
+        res.status(200).json(workout)
+    } catch (error) {
+        response.status(400).json({error: error.message})
+    }
 })
 
 // DELETE a new workout 
