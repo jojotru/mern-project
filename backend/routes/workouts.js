@@ -9,6 +9,7 @@ const {
 
 
 const router = express.Router()
+
 // GET all workouts
 router.get('/', getWorkouts)
 
