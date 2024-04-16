@@ -19,8 +19,7 @@ const WorkoutForm = () => {
             }
         })
 
-        // const json = await response.json()
-            const json = await response.text()
+            const json = await response.json()
 
         if (!response.ok){
             setError(json.error)
